@@ -19,13 +19,20 @@ const App = () => {
   const [phone, setPhone] = useState("");
   const [OTP, setOTP] = useState("");
   const [showOTP, setShowOTP] = useState(false);
-const user = {
-  verificationId:"+919834351308",
-  countryCode:"IN"
-}
+
   let navigate = useNavigate();
 
   const  getOtp = async() => {
+    let input = phone;
+    // let output = input.replace(/[-\s]/g, '');
+    let output = input.split(" ").join("");
+    setPhone(input);
+    output = output.replace('-','')
+    const user = {
+      verificationId:output,
+      countryCode:"IN"
+    }
+    console.log(output)
     if (phone.length === 0) {
       alert("Please enter phone number to proceed");
     }
